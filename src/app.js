@@ -8,26 +8,18 @@ setInterval(offer.updateValidated, 10000);
 
 
 // heroku login
-// heroku logs --tail --app api-node-aaron-saksik
+// heroku logs --tail --app yauction-api
 
 /*
+Ecrire le rendu pdf
+
 **OFFRES**
-- Annuler une offres rendre l'avant dernière en attente
-
-**VENTES**
-
-**ADMIN**
-- Voiture, moto, scooter. supprimer modifier
-- Users. modifier supprimer
-- Offres: Validées, refusées, en cours.
+- Ajouter du credit au user avec stripe avant de faire une offre
 
 **PRODUITS**
-- CSS Page détail.
+- Page détail.
 - Page Home.
 - Image cloudinary.
-- Plusieurs images.
 
-- heroku
-- stripe
 
 */

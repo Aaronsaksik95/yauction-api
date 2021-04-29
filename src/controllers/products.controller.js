@@ -88,19 +88,16 @@ exports.readWithFilter = (req, res) => {
     var filter = {
         type: req.query.vehicle
     }
-    if (req.query.state != '')           { filter.state = req.query.state }
-    if (req.query.brand != '')           { filter.brand = req.query.brand }
-    if (req.query.model != '')           { filter.model = req.query.model }
-    if (req.query.yearMin != 0 && req.query.yearMax != 0)             { filter.year = {$gte: req.query.yearMin, $lte: req.query.yearMax} }
-    if (req.query.color != '')           { filter.color = req.query.color }
-    if (req.query.energy != '')          { filter.energy = req.query.energy }
-    // if (req.query.mileage != '')       { filter.mileage = req.query.mileage }
-    // if (req.query.seat != '')          { filter.seat = req.query.seat }
-    if (req.query.region != '')          { filter.region = req.query.region }
-    if (req.query.startingPriceMin != 0 && req.query.startingPriceMax != 0) { filter.startingPrice = {$gte: req.query.startingPriceMin, $lte: req.query.startingPriceMax} }
+    if (req.query.state != '') { filter.state = req.query.state }
+    if (req.query.brand != '') { filter.brand = req.query.brand }
+    if (req.query.model != '') { filter.model = req.query.model }
+    if (req.query.yearMin != 0 && req.query.yearMax != 0) { filter.year = { $gte: req.query.yearMin, $lte: req.query.yearMax } }
+    if (req.query.color != '') { filter.color = req.query.color }
+    if (req.query.energy != '') { filter.energy = req.query.energy }
+    if (req.query.mileageMin != 0 && req.query.mileageMax != 0) { filter.mileage = { $gte: req.query.mileageMin, $lte: req.query.mileageMax } }
+    if (req.query.region != '') { filter.region = req.query.region }
+    if (req.query.startingPriceMin != 0 && req.query.startingPriceMax != 0) { filter.startingPrice = { $gte: req.query.startingPriceMin, $lte: req.query.startingPriceMax } }
 
-    console.log(req.query)
-    console.log(filter)
     Product.find(
         filter
     )
@@ -123,7 +120,7 @@ exports.readWithFilter = (req, res) => {
 }
 
 exports.readWithVehicle = (req, res) => {
-    Product.find({ type: req.params.vehicle })
+    Product.find({ type: req.params.vehicle, isSold: false })
         .sort('-created_at')
         .populate("brand")
         .populate("model")
