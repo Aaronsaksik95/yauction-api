@@ -9,18 +9,3 @@ setInterval(offer.updateValidated, 10000);
 
 // heroku login
 // heroku logs --tail --app yauction-api
-
-/*
-Ecrire le rendu pdf
-
-**FILTER**
-- Filtre yearMin yearMax
-- Pas reencherir sur son produit
-
-**PRODUITS**
-- CSS DETAILS
-- Page Home.
-- Image cloudinary.
-
-
-*/
