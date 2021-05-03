@@ -10,6 +10,7 @@ exports.create = (req, res) => {
         product: req.body.product,
         created_at: Date.now()
     });
+    // if (Product.findOne({_id: req.body.product}).startingPrice < req.body.offeredPrice){}
     Offer.updateMany({ product: req.body.product }, { status: "refused" })
         .then(() => {
             offer.save()

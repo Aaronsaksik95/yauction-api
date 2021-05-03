@@ -27,7 +27,7 @@ const userSchema = new Schema({
     phone: {
         type: String
     },
-    credit: {
+    sold: {
         type: Number
     },
     isAdmin: {

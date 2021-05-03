@@ -13,11 +13,12 @@ setInterval(offer.updateValidated, 10000);
 /*
 Ecrire le rendu pdf
 
-**OFFRES**
-- Ajouter du credit au user avec stripe avant de faire une offre
+**FILTER**
+- Filtre yearMin yearMax
+- Pas reencherir sur son produit
 
 **PRODUITS**
-- Page détail.
+- CSS DETAILS
 - Page Home.
 - Image cloudinary.
 

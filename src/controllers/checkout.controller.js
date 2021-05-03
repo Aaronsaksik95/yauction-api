@@ -1,5 +1,6 @@
 const config = require('../configs/stripe.config');
-const stripe = require('stripe')(config.stripe.key)
+const stripe = require('stripe')(config.stripe.key);
+const User = require('../models/user.model');
 require("regenerator-runtime/runtime");
 
 exports.checkout = async (req, res) => {
@@ -20,7 +21,7 @@ exports.checkout = async (req, res) => {
     mode: 'payment',
     success_url: `${config.stripe.vue_url}success`,
     cancel_url: `${config.stripe.vue_url}cancel`,
-  });
+  })
 
   res.json({ id: session.id });
 };

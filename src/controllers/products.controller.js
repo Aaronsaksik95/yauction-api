@@ -91,12 +91,12 @@ exports.readWithFilter = (req, res) => {
     if (req.query.state != '') { filter.state = req.query.state }
     if (req.query.brand != '') { filter.brand = req.query.brand }
     if (req.query.model != '') { filter.model = req.query.model }
-    if (req.query.yearMin != 0 && req.query.yearMax != 0) { filter.year = { $gte: req.query.yearMin, $lte: req.query.yearMax } }
+    if (req.query.yearMin != 0 || req.query.yearMax != 0) { filter.year = { $gte: req.query.yearMin, $lte: req.query.yearMax } }
     if (req.query.color != '') { filter.color = req.query.color }
     if (req.query.energy != '') { filter.energy = req.query.energy }
-    if (req.query.mileageMin != 0 && req.query.mileageMax != 0) { filter.mileage = { $gte: req.query.mileageMin, $lte: req.query.mileageMax } }
+    if (req.query.mileageMin != 0 || req.query.mileageMax != 0) { filter.mileage = { $gte: req.query.mileageMin, $lte: req.query.mileageMax } }
     if (req.query.region != '') { filter.region = req.query.region }
-    if (req.query.startingPriceMin != 0 && req.query.startingPriceMax != 0) { filter.startingPrice = { $gte: req.query.startingPriceMin, $lte: req.query.startingPriceMax } }
+    if (req.query.startingPriceMin != 0 || req.query.startingPriceMax != 0) { filter.startingPrice = { $gte: req.query.startingPriceMin, $lte: req.query.startingPriceMax } }
 
     Product.find(
         filter
@@ -121,6 +121,26 @@ exports.readWithFilter = (req, res) => {
 
 exports.readWithVehicle = (req, res) => {
     Product.find({ type: req.params.vehicle, isSold: false })
+        .sort('-created_at')
+        .populate("brand")
+        .populate("model")
+        .then((data) => {
+            res.send({
+                products: data,
+                response: true
+            })
+        })
+        .catch((err) => {
+            console.log(err.message);
+            res.status(500).send({
+                error: 500,
+                message: err.message || "some error occured while creating product"
+            })
+        })
+}
+
+exports.readWithVehicleAdmin = (req, res) => {
+    Product.find({ type: req.params.vehicle })
         .sort('-created_at')
         .populate("brand")
         .populate("model")

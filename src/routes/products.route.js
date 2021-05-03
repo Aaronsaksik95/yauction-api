@@ -10,6 +10,7 @@ router.get('/products/user', product.readWithUser);
 router.get('/products/:id', product.readOne);
 router.get('/products/filter/vehicle', product.readWithFilter);
 router.get('/products/vehicle/:vehicle', product.readWithVehicle);
+router.get('/products/vehicle/admin/:vehicle', product.readWithVehicleAdmin);
 router.put('/products/:id', verifyToken, product.update);
 router.delete('/products/:id', verifyToken, product.delete);
 
