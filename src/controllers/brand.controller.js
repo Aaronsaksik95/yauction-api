@@ -23,6 +23,7 @@ exports.create = (req, res) => {
 }
 exports.read = (req, res) => {
     Brand.find()
+        .sort('title')
         .then((data) => {
             res.send({
                 brands: data,

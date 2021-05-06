@@ -41,6 +41,7 @@ exports.read = (req, res) => {
 
 exports.readWithBrand = (req, res) => {
     Model.find({ brand: req.params.brand })
+        .sort('title')
         .then((data) => {
             res.send({
                 models: data,
@@ -74,7 +75,7 @@ exports.readOneTitle = (req, res) => {
 }
 
 exports.readOne = (req, res) => {
-    Model.findOne({_id: req.params.id})
+    Model.findOne({ _id: req.params.id })
         .then((data) => {
             res.send({
                 model: data,
