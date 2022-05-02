@@ -1,5 +1,6 @@
 const Offer = require('../models/offers.model');
 const User = require('../models/user.model');
+
 const Product = require('../models/product.model');
 const jwt = require('jsonwebtoken')
 
